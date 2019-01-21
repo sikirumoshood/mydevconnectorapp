@@ -5,13 +5,10 @@ const user = require('./routes/api/user');
 const post = require('./routes/api/post');
 const profile = require('./routes/api/profile');
 
-
-
-//DB config
-
+//DB CONFIG
 const db = require('./config/keys').mongoURI;
-//Connect to mongoDB through mongoose
 
+//Connect to mongoDB through mongoose
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("MONGODB CONNECTED SUCCESSFULLY..."))
