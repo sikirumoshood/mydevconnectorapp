@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const user = require('./routes/api/user');
 const post = require('./routes/api/post');
 const profile = require('./routes/api/profile');
+const bodyParser = require('body-parser');
 
 //DB CONFIG
 const db = require('./config/keys').mongoURI;
@@ -17,6 +18,11 @@ mongoose
 app.get('/', (req, res) => res.send('hello world'));
 
 const port = process.env.PORT || 5000;
+
+// Body-parser middleware setup
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //USE ROUTES
 
