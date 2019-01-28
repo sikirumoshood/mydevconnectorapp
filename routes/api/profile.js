@@ -39,7 +39,6 @@ Router.get(
 
 Router.get("/handle/:handle", (req, res) => {
   const errors = {};
-  console.log("Req INFO: " + req.params.handle + req.url);
   Profile.findOne({ handle: req.params.handle })
     .populate("user", ["name", "avatar"])
     .then(profile => {

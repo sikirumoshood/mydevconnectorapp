@@ -4,7 +4,6 @@ import ProfileCred from "./ProfileCred";
 import ProfileGithub from "./ProfileGithub";
 import ProfileHeader from "./ProfileHeader";
 import Preloader from "../common/Preloader";
-
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -16,23 +15,37 @@ class Profile extends Component {
     const { profile, loading } = this.props.profile;
 
     if (profile === null || loading === true) {
-      profileContent = <Preloader />;
+      profileContent = (
+        <div style={{ marginLeft: "40%" }}>
+          <Preloader />
+        </div>
+      );
     } else {
       profileContent = (
         <div>
           <div className="row">
             <div className="col-md-6">
-              <Link to="/profiles" className="btn btn-light mb-3 float-left">
+              <Link
+                to="/profiles"
+                style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
+                className="btn btn-light mb-3 float-left"
+              >
                 Back to profiles
               </Link>
             </div>
             <div className="col-md-6" />
           </div>
-          <ProfileHeader />
-          <ProfileAbout />
-          <ProfileCred />
-          <ProfileGithub />
-          <Preloader />
+          <ProfileHeader profile={profile} />
+          <ProfileAbout profile={profile} />
+          <ProfileCred
+            experiences={profile.experience}
+            educations={profile.education}
+          />
+          {profile.githubusername ? (
+            <ProfileGithub username={profile.githubusername} />
+          ) : (
+            ""
+          )}
         </div>
       );
     }
@@ -49,7 +62,6 @@ class Profile extends Component {
 
   componentDidMount() {
     if (this.props.match.params.handle) {
-      console.log("Handle: " + this.props.match.params.handle);
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
