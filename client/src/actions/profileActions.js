@@ -166,8 +166,6 @@ export const getProfileByHandle = handle => dispatch => {
   axios
     .get(`/api/profile/handle/${handle}`)
     .then(res => {
-      console.log(res.data);
-
       //we also want to view get developer repos
       let clientId = "b40ad624918b8a03149c",
         clientSecret = "dd820583d9cf0dc59f86840fba5270a4c516698c",
@@ -182,6 +180,7 @@ export const getProfileByHandle = handle => dispatch => {
         .then(resp => resp.json())
         .then(data => {
           if (Array.isArray(data)) {
+            //Array is returned if successful
             dispatch({
               type: VIEW_DEVELOPER_PROFILE,
               payload: {
@@ -194,6 +193,7 @@ export const getProfileByHandle = handle => dispatch => {
               payload: res.data
             });
           } else {
+            //An object is returned
             dispatch({
               type: INVALID_GITHUB_USERNAME,
               payload: {
