@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ProfileAbout from "./ProfileAbout";
 import ProfileCred from "./ProfileCred";
-import ProfileGithub from "./ProfileGithub";
 import ProfileHeader from "./ProfileHeader";
 import Preloader from "../common/Preloader";
 import { connect } from "react-redux";
@@ -9,6 +8,14 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getProfileByHandle } from "../../actions/profileActions";
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      invalidRepo: ""
+    };
+  }
+
   render() {
     let profileContent;
 
@@ -41,38 +48,97 @@ class Profile extends Component {
             experiences={profile.experience}
             educations={profile.education}
           />
-          {profile.githubusername ? (
-            <ProfileGithub username={profile.githubusername} />
-          ) : (
-            ""
-          )}
         </div>
       );
     }
+
+    // Github content logic
+
+    let repoItems;
+    if (!this.state.invalidRepo) {
+      repoItems = this.props.devprofile.repos.map(repo => (
+        <div
+          style={{ borderStyle: "none", backgroundColor: "#FAFAFA" }}
+          key={repo.id}
+          className="card card-body mb-2"
+        >
+          <div className="row">
+            <div className="col-md-6">
+              <h4>
+                <Link
+                  to={repo.html_url}
+                  className="text-info"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {" "}
+                  {repo.name}
+                </Link>
+              </h4>
+              <p>{repo.description}</p>
+            </div>
+            <div
+              style={{ borderStyle: "none", backgroundColor: "#FAFAFA" }}
+              className="col-md-6"
+            >
+              <span className="badge badge-info mr-1">
+                Stars: {repo.stargazers_count}
+              </span>
+              <span className="badge badge-secondary mr-1">
+                Watchers: {repo.watchers_count}
+              </span>
+              <span className="badge badge-success">
+                Forks: {repo.forks_count}
+              </span>
+            </div>
+          </div>
+        </div>
+      ));
+    } else {
+      repoItems = (
+        <p className="text-muted text-center">
+          Github username you provided does not exist.
+        </p>
+      );
+    }
+
     return (
       <div className="profile">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">{profileContent}</div>
+            <div className="col-md-12">
+              {profileContent}
+
+              <h4 className="mt-4 pl-3">Github repos</h4>
+              {repoItems}
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.devprofile) {
+      this.setState({ invalidRepo: nextProps.devprofile.gitHubErrorOcurred });
     }
   }
 }
 
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
-  getProfileByHandle: PropTypes.func.isRequired
+  getProfileByHandle: PropTypes.func.isRequired,
+  devprofile: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  devprofile: state.devprofile
 });
 export default connect(
   mapStateToProps,

@@ -3,7 +3,8 @@ import {
   GET_PROFILES,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  PROFILE_NOT_FOUND
+  PROFILE_NOT_FOUND,
+  GET_PROFILE_BY_HANDLE
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +16,12 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PROFILE:
+      return {
+        ...state,
+        profile: action.payload,
+        loading: false
+      };
+    case GET_PROFILE_BY_HANDLE:
       return {
         ...state,
         profile: action.payload,
