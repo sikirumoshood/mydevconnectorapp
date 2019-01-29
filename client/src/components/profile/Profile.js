@@ -12,7 +12,8 @@ class Profile extends Component {
     super(props);
 
     this.state = {
-      invalidRepo: ""
+      invalidRepo: "",
+      currentUser: ""
     };
   }
 
@@ -20,8 +21,14 @@ class Profile extends Component {
     let profileContent;
 
     const { profile, loading } = this.props.profile;
+    const { currentUser } = this.state;
 
-    if (profile === null || loading === true) {
+    if (
+      profile === null ||
+      loading === true ||
+      this.stateinvalidRepo === "" ||
+      currentUser === ""
+    ) {
       profileContent = (
         <div style={{ marginLeft: "40%" }}>
           <Preloader />
@@ -35,9 +42,10 @@ class Profile extends Component {
               <Link
                 to="/profiles"
                 style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
-                className="btn btn-light mb-3 float-left"
+                className="btn btn-light btn-lg mb-3 float-left"
               >
-                Back to profiles
+                <i className="fa fa-long-arrow-alt-left text-muted" /> Back to
+                profiles
               </Link>
             </div>
             <div className="col-md-6" />
@@ -109,8 +117,14 @@ class Profile extends Component {
             <div className="col-md-12">
               {profileContent}
 
-              <h4 className="mt-4 pl-3">Github repos</h4>
-              {repoItems}
+              {this.state.invalidRepo === "" ? (
+                ""
+              ) : (
+                <div>
+                  <h4 className="mt-4 pl-3">Github repos</h4>
+                  {repoItems}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -127,6 +141,9 @@ class Profile extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.devprofile) {
       this.setState({ invalidRepo: nextProps.devprofile.gitHubErrorOcurred });
+    }
+    if (nextProps.profile.profile) {
+      this.state.currentUser = nextProps.profile.profile.gethubusername;
     }
   }
 }
