@@ -15,7 +15,7 @@ export const addPost = postData => dispatch => {
     .then(res =>
       dispatch({
         type: ADD_POST,
-        payload: post.data
+        payload: res.data
       })
     )
     .catch(err =>
@@ -24,4 +24,31 @@ export const addPost = postData => dispatch => {
         payload: err.response.data
       })
     );
+};
+
+export const getPosts = () => dispatch => {
+  dispatch(setPostLoading());
+  axios
+    .get("/api/post")
+    .then(res =>
+      dispatch({
+        type: GET_POSTS,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_POSTS,
+        payload: null
+      })
+    );
+};
+
+export const setPostLoading = () => {
+  return {
+    type: POST_LOADING,
+    payload: {
+      loading: true
+    }
+  };
 };

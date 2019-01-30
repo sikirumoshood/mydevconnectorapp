@@ -152,7 +152,11 @@ class Profile extends Component {
       this.setState({ invalidRepo: nextProps.devprofile.gitHubErrorOcurred });
     }
     if (nextProps.profile.profile) {
-      this.state.currentUser = nextProps.profile.profile.gethubusername;
+      if (Object.keys(nextProps.profile.profile) > 0) {
+        this.state.currentUser = nextProps.profile.profile.gethubusername;
+      } else {
+        this.props.history.push("/notfound");
+      }
     }
   }
 }

@@ -23,6 +23,8 @@ import {
 import attachTokenToAllRequestsHeader from "./utils/attachTokenToAllRequestsHeader";
 import jwt_decode from "jwt-decode";
 import EditProfile from "./components/edit-profile/EditProfile";
+import Posts from "./components/posts/Posts";
+import NotFound from "./components/not-found/NotFound";
 
 //Each time the app is refreshed, it should maintain login state
 const token = localStorage.getItem("jwt-token");
@@ -57,6 +59,7 @@ class App extends Component {
             <Route path="/register" exact component={Register} />
             <Route path="/profiles" exact component={Profiles} />
             <Route path="/profile/:handle" exact component={Profile} />
+            <Route path="/notfound" exact component={NotFound} />
             <Switch>
               <PrivateRoute path="/dashboard" exact component={Dashboard} />
             </Switch>
@@ -88,6 +91,10 @@ class App extends Component {
                 component={AddEducation}
               />
             </Switch>
+            <Switch>
+              <PrivateRoute path="/feed" exact component={Posts} />
+            </Switch>
+
             <Footer />
           </div>
         </Router>
