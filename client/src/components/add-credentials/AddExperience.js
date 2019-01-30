@@ -70,6 +70,7 @@ class AddExperience extends Component {
                 >
                   <i className="fa fa-long-arrow-alt-left text-muted" /> Go back
                 </Link>
+
                 <h1 className="display-4 text-center">Add Your Experience</h1>
                 <p className="lead text-center">
                   Add any developer/programming positions that you have had in

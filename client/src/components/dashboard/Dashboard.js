@@ -63,7 +63,7 @@ class Dashboard extends Component {
             <div style={{ marginTop: "3%" }}>
               <button
                 type="button"
-                style={{ boxShadow: "0px 0px 15px #C2788B" }}
+                style={{ boxShadow: "0px 4px 10px #C2788B" }}
                 className="btn btn-danger btn-lg"
                 onClick={this.onDeleteClicked.bind(this)}
               >

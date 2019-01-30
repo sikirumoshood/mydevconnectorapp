@@ -42,10 +42,19 @@ class Profile extends Component {
               <Link
                 to="/profiles"
                 style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
-                className="btn btn-light btn-lg mb-3 float-left"
+                className="btn btn-light btn-lg mb-3 mr-3 float-left"
               >
                 <i className="fa fa-long-arrow-alt-left text-muted" /> Back to
                 profiles
+              </Link>
+
+              <Link
+                to="/dashboard"
+                style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
+                className="btn btn-light btn-lg mb-3 float-left"
+              >
+                Go to dashboard{" "}
+                <i className="fa fa-long-arrow-alt-right text-success text-muted" />
               </Link>
             </div>
             <div className="col-md-6" />
