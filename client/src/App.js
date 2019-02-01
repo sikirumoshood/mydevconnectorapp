@@ -25,6 +25,7 @@ import jwt_decode from "jwt-decode";
 import EditProfile from "./components/edit-profile/EditProfile";
 import Posts from "./components/posts/Posts";
 import NotFound from "./components/not-found/NotFound";
+import Post from "./components/post/Post";
 
 //Each time the app is refreshed, it should maintain login state
 const token = localStorage.getItem("jwt-token");
@@ -93,6 +94,9 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute path="/feed" exact component={Posts} />
+            </Switch>
+            <Switch>
+              <PrivateRoute path="/post/:id" exact component={Post} />
             </Switch>
 
             <Footer />

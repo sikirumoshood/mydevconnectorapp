@@ -6,28 +6,28 @@ import Preloader from "../common/Preloader";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getProfileByHandle } from "../../actions/profileActions";
+import { getDevProfileByHandle } from "../../actions/devViewActions";
 class Profile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       invalidRepo: "",
-      currentUser: ""
+      currentGithubUser: "" //currentGithubUser keeps track of the githubusername which will be passed in when the repos are fetched
     };
   }
 
   render() {
     let profileContent;
 
-    const { profile, loading } = this.props.profile;
-    const { currentUser } = this.state;
+    const { profile, loading } = this.props.currentDevProfile;
+    const { currentGithubUser } = this.state;
 
     if (
       profile === null ||
       loading === true ||
-      this.stateinvalidRepo === "" ||
-      currentUser === ""
+      this.state.invalidRepo === "" ||
+      currentGithubUser === ""
     ) {
       profileContent = (
         <div style={{ marginLeft: "40%" }}>
@@ -143,7 +143,7 @@ class Profile extends Component {
 
   componentWillMount() {
     if (this.props.match.params.handle) {
-      this.props.getProfileByHandle(this.props.match.params.handle);
+      this.props.getDevProfileByHandle(this.props.match.params.handle);
     }
   }
 
@@ -151,26 +151,25 @@ class Profile extends Component {
     if (nextProps.devprofile) {
       this.setState({ invalidRepo: nextProps.devprofile.gitHubErrorOcurred });
     }
-    if (nextProps.profile.profile) {
-      if (Object.keys(nextProps.profile.profile) > 0) {
-        this.state.currentUser = nextProps.profile.profile.gethubusername;
-      } else {
-        this.props.history.push("/notfound");
-      }
+    if (nextProps.currentDevProfile.profile) {
+      this.state.currentGithubUser =
+        nextProps.currentDevProfile.profile.gethubusername;
     }
   }
 }
 
 Profile.propTypes = {
   profile: PropTypes.object.isRequired,
-  getProfileByHandle: PropTypes.func.isRequired,
-  devprofile: PropTypes.object.isRequired
+  getDevProfileByHandle: PropTypes.func.isRequired,
+  devprofile: PropTypes.object.isRequired,
+  currentDevProfile: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   profile: state.profile,
-  devprofile: state.devprofile
+  devprofile: state.devprofile,
+  currentDevProfile: state.devCurrentProfile
 });
 export default connect(
   mapStateToProps,
-  { getProfileByHandle }
+  { getDevProfileByHandle }
 )(Profile);

@@ -31,13 +31,28 @@ class PostForm extends Component {
   };
   render() {
     return (
-      <div className="container">
-        <div className="post-form mb-3">
-          <div className="card card-info">
-            <div className="card-header bg-info text-white">
+      <div>
+        <div>
+          <div
+            style={{
+              boxShadow: "0px 0px 25px #F0F0F2",
+              marginBottom: "2%",
+              borderStyle: "none"
+            }}
+            className="card card-info"
+          >
+            <div className="card-header bg-primary text-white">
               Say Somthing...
             </div>
-            <div className="card-body">
+
+            <div
+              style={{
+                boxShadow: "0px 0px 25px #F0F0F2",
+                marginBottom: "2%",
+                borderStyle: "none"
+              }}
+              className="card-body"
+            >
               <form onSubmit={this.handleSubmit}>
                 <TextAreaFieldGroup
                   name="text"

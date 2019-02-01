@@ -8,7 +8,14 @@ class ProfileHeader extends Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <div className="card card-body bg-info text-white mb-3">
+          <div
+            style={{
+              boxShadow: "0px 0px 25px #F0F0F2",
+              marginBottom: "2%",
+              borderStyle: "none"
+            }}
+            className="card card-body bg-primary text-white mb-3"
+          >
             <div className="row">
               <div className="col-4 col-md-3 m-auto">
                 <img
