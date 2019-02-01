@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { deletePost, likePost, dislikePost } from "../../actions/postActions";
-import Moment from 'react-moment';
+import classnames from "classnames";
+import Moment from "react-moment";
 
 class PostItem extends Component {
   handleDelete = postId => {
@@ -43,7 +44,11 @@ class PostItem extends Component {
               <p className="text-center">{post.name}</p>
             </div>
             <div className="col-md-10">
-              <p className="text-muted"><b><Moment fromNow>{post.date}</Moment></b></p>
+              <p className="text-muted">
+                <b>
+                  <Moment fromNow>{post.date}</Moment>
+                </b>
+              </p>
               <p className="lead">{post.text}</p>
 
               {/* Only display actions if show actions is true */}
@@ -60,7 +65,13 @@ class PostItem extends Component {
                     type="button"
                     className="btn btn-light mr-1"
                   >
-                    <i className="text-info fas fa-thumbs-up" />
+                    <i
+                      className={classnames("fas fa-thumbs-up", {
+                        "text-success":
+                          post.likes.filter(({ user }) => user === auth.user.id)
+                            .length > 0
+                      })}
+                    />
                     <span className="badge badge-light">
                       {post.likes.length}
                     </span>
@@ -72,7 +83,13 @@ class PostItem extends Component {
                     type="button"
                     className="btn btn-light mr-1"
                   >
-                    <i className="text-secondary fas fa-thumbs-down" />
+                    <i
+                      className={classnames("fas fa-thumbs-down", {
+                        "text-danger":
+                          post.likes.filter(({ user }) => user === auth.user.id)
+                            .length <= 0
+                      })}
+                    />
                   </button>
                   <Link
                     style={{

@@ -15,7 +15,10 @@ class PostForm extends Component {
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    //Accepts only 300 characters
+    if (e.target.value.length <= 300) {
+      this.setState({ [e.target.name]: e.target.value });
+    }
   };
 
   handleSubmit = e => {
@@ -65,6 +68,9 @@ class PostForm extends Component {
                 <button type="submit" className="btn btn-dark">
                   Submit
                 </button>
+                <span className="float-right">
+                  {this.state.text.length} / 300
+                </span>
               </form>
             </div>
           </div>
