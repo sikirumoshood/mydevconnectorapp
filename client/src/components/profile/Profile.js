@@ -34,6 +34,10 @@ class Profile extends Component {
           <Preloader />
         </div>
       );
+
+      if (this.props.errors.noprofile) {
+        this.props.history.push("/notfound");
+      }
     } else {
       profileContent = (
         <div>
@@ -126,7 +130,8 @@ class Profile extends Component {
             <div className="col-md-12">
               {profileContent}
 
-              {this.state.invalidRepo === "" ? (
+              {this.state.invalidRepo === "" ||
+              this.state.invalidRepo === null ? (
                 ""
               ) : (
                 <div>
@@ -163,12 +168,14 @@ Profile.propTypes = {
   profile: PropTypes.object.isRequired,
   getDevProfileByHandle: PropTypes.func.isRequired,
   devprofile: PropTypes.object.isRequired,
-  currentDevProfile: PropTypes.object.isRequired
+  currentDevProfile: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   profile: state.profile,
   devprofile: state.devprofile,
-  currentDevProfile: state.devCurrentProfile
+  currentDevProfile: state.devCurrentProfile,
+  errors: state.errors
 });
 export default connect(
   mapStateToProps,
