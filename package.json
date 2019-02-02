@@ -9,7 +9,8 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM-CONFIG-PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM-CONFIG-PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "node": "10.9.0"
   },
   "author": "Sikiru Moshood",
   "license": "MIT",
