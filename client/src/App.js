@@ -55,48 +55,44 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route path="/" exact component={Landing} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/register" exact component={Register} />
-            <Route path="/profiles" exact component={Profiles} />
-            <Route path="/profile/:handle" exact component={Profile} />
-            <Route path="/notfound" exact component={NotFound} />
             <Switch>
+              <Route path="/" exact component={Landing} />
+              <Route path="/login" exact component={Login} />
+              <Route path="/register" exact component={Register} />
+              <Route path="/profiles" exact component={Profiles} />
+              <Route path="/profile/:handle" exact component={Profile} />
+              <Route path="/notfound" exact component={NotFound} />
+
               <PrivateRoute path="/dashboard" exact component={Dashboard} />
-            </Switch>
-            <Switch>
+
               <PrivateRoute
                 path="/create-profile"
                 exact
                 component={CreateProfile}
               />
-            </Switch>
-            <Switch>
+
               <PrivateRoute
                 path="/edit-profile"
                 exact
                 component={EditProfile}
               />
-            </Switch>
-            <Switch>
+
               <PrivateRoute
                 path="/add-experience"
                 exact
                 component={AddExperience}
               />
-            </Switch>
-            <Switch>
+
               <PrivateRoute
                 path="/add-education"
                 exact
                 component={AddEducation}
               />
-            </Switch>
-            <Switch>
+
               <PrivateRoute path="/feed" exact component={Posts} />
-            </Switch>
-            <Switch>
+
               <PrivateRoute path="/post/:id" exact component={Post} />
+              <Route component={NotFound} />
             </Switch>
 
             <Footer />
