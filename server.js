@@ -6,6 +6,7 @@ const post = require("./routes/api/post");
 const profile = require("./routes/api/profile");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const path = require("path");
 
 //DB CONFIG
 const db = require("./config/keys").mongoURI;
@@ -13,10 +14,7 @@ const db = require("./config/keys").mongoURI;
 //Connect to mongoDB through mongoose
 mongoose.set("useFindAndModify", false);
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log("MONGODB CONNECTED SUCCESSFULLY..."))
   .catch(err => console.log(`UNABLE TO CONNECT: ${err}`));
 
@@ -40,5 +38,14 @@ require("./config/passport")(passport);
 app.use("/api/user", user);
 app.use("/api/profile", profile);
 app.use("/api/post", post);
+
+//Connect server to static asset in client
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/static")); //when no route matches on server it reroutes to client/static folder of built client
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 app.listen(port, () => console.log(`Server running on port ${port}...`));
