@@ -20,6 +20,7 @@ class ProfileCred extends Component {
         <p>
           <strong>Description:</strong> {exp.description}
         </p>
+        <hr style={{ opacity: 0.7 }} />
       </li>
     ));
 
@@ -46,6 +47,7 @@ class ProfileCred extends Component {
           <strong>Description:</strong>
           {edu.description}
         </p>
+        <hr style={{ opacity: 0.7 }} />
       </li>
     ));
     return (
