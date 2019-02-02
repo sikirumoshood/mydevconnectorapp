@@ -72,13 +72,13 @@ class PostItem extends Component {
               >
                 <div className="row">
                   <div className="col-md-2">
-                    <a href="profile.html">
-                      <img
-                        className="rounded-circle d-none d-md-block"
-                        src={post.avatar}
-                        alt=""
-                      />
-                    </a>
+                    <img
+                      className="rounded-circle d-md-block ml-auto mr-auto"
+                      src={post.avatar}
+                      alt=""
+                      style={{ width: "100px", height: "100px" }}
+                    />
+
                     <br />
                     <p className="text-center">{post.name}</p>
                   </div>

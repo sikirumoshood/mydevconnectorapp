@@ -45,8 +45,9 @@ class CommentItem extends Component {
           <div className="col-md-2">
             <a>
               <img
-                className="rounded-circle d-none d-md-block"
+                className="rounded-circle ml-auto mr-auto d-md-block"
                 src={comment.avatar}
+                style={{ width: "100px", height: "100px" }}
                 alt=""
               />
             </a>

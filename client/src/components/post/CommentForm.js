@@ -43,7 +43,7 @@ class CommentForm extends Component {
             className="card card-info"
           >
             <div className="card-header bg-primary text-white">
-              Say Somthing...
+              Say Something...
             </div>
 
             <div

@@ -1,4 +1,3 @@
-module.exports = {
-    mongoURI: "mongodb://sikirumoshood:Olanrewaju9@ds159641.mlab.com:59641/nodeapp",
-    tokenKey: 'encrypted'
-}
+if (process.env.NODE_ENV === "production") {
+  module.exports = require("./keys_prod");
+} else module.exports = require("./keys_dev");
