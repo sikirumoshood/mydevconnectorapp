@@ -3,12 +3,24 @@ import {
   GET_ERRORS,
   DEV_PROFILE_LOADING,
   VIEW_DEVELOPER_PROFILE,
-  INVALID_GITHUB_USERNAME
+  INVALID_GITHUB_USERNAME,
+  CLEAR_ERRORS,
+  CLEAR_GITHUB_REPO
 } from "./types";
 
 import axios from "axios";
 
 export const getDevProfileByHandle = handle => dispatch => {
+  //Clear existing errors so as to be sure that any error found in the error reducer originates from here
+
+  dispatch({
+    type: CLEAR_ERRORS,
+    payload: {}
+  });
+  dispatch({
+    type: CLEAR_GITHUB_REPO
+  });
+  dispatch(setProfileLoading());
   axios
     .get(`/api/profile/handle/${handle}`)
     .then(res => {
