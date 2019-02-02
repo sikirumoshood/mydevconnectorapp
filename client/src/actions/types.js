@@ -20,3 +20,4 @@ export const DISLIKE_POST = "DISLIKE_POST";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const CLEAR_GITHUB_REPO = "CLEAR_GITHUB_REPO";
