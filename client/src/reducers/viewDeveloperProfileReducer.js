@@ -1,9 +1,9 @@
 import { VIEW_DEVELOPER_PROFILE } from "../actions/types";
 import { INVALID_GITHUB_USERNAME } from "../actions/types";
-
+import { CLEAR_GITHUB_REPO } from "../actions/types";
 const initialState = {
   repos: [],
-  gitHubErrorOcurred: true
+  gitHubErrorOcurred: null
 };
 
 export default function(state = initialState, action) {
@@ -19,6 +19,12 @@ export default function(state = initialState, action) {
         ...state,
         repos: action.payload.repos,
         gitHubErrorOcurred: action.payload.gitHubErrorOcurred
+      };
+    case CLEAR_GITHUB_REPO:
+      return {
+        ...state,
+        repos: [],
+        gitHubErrorOcurred: null
       };
 
     default:

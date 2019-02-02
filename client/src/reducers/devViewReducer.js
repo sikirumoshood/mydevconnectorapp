@@ -17,6 +17,7 @@ export default function(state = initialState, action) {
     case DEV_PROFILE_LOADING:
       return {
         ...state,
+        profile: null,
         loading: true
       };
     default:
