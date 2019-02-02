@@ -152,8 +152,9 @@ class Profile extends Component {
       this.setState({ invalidRepo: nextProps.devprofile.gitHubErrorOcurred });
     }
     if (nextProps.currentDevProfile.profile) {
-      this.state.currentGithubUser =
-        nextProps.currentDevProfile.profile.gethubusername;
+      this.setState({
+        currentGithubUser: nextProps.currentDevProfile.profile.gethubusername
+      });
     }
   }
 }

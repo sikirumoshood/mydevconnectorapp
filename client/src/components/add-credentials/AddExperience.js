@@ -146,6 +146,7 @@ class AddExperience extends Component {
                   <input
                     type="submit"
                     className="btn btn-info btn-block mt-4"
+                    value="Add"
                   />
                 </form>
               </div>

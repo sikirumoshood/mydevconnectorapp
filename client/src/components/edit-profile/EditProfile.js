@@ -241,7 +241,11 @@ class CreateProfile extends Component {
 
                 {this.state.displaySocialInputs ? socialNetworkComponents : ""}
 
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  type="submit"
+                  className="btn btn-info btn-block mt-4"
+                  value="Add"
+                />
               </form>
             </div>
           </div>

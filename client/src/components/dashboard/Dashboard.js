@@ -8,6 +8,7 @@ import ProfileActions from "../dashboard/ProfileActions";
 import { deleteAccount } from "../../actions/profileActions";
 import Education from "./Education";
 import Experience from "./Experience";
+import Transition from "react-transition-group/Transition";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -87,13 +88,46 @@ class Dashboard extends Component {
         );
       }
     }
+
+    const duration = 300;
+
+    const defaultStyle = {
+      transition: `opacity ${duration}ms ease-in-out`,
+      opacity: 0
+    };
+
+    const transitionStyles = {
+      entering: { opacity: 0.01 },
+      entered: { opacity: 1 },
+      exiting: { opacity: 0.01 },
+      exited: { opacity: 0 }
+    };
     return (
       <div className="dashboard">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="display-4">Dashboard</div>
-              {dashContent}
+              {/* appear is required to make the component animate on load other wise it won't. But if the in is toggled later
+            you don't need appear.
+      */}
+              <Transition
+                in={true}
+                appear={true}
+                timeout={duration}
+                unmountOnExit
+              >
+                {state => (
+                  <div
+                    style={{
+                      ...defaultStyle,
+                      ...transitionStyles[state]
+                    }}
+                  >
+                    {dashContent}
+                  </div>
+                )}
+              </Transition>
             </div>
           </div>
         </div>
