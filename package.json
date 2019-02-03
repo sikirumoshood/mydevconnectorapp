@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Social Network Application",
   "engines": {
-    "node": "10.9.0"
+    "node": "10.9.0",
+    "npm": "6.4.0"
   },
   "main": "server.js",
   "scripts": {
