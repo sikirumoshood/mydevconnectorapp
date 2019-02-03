@@ -42,9 +42,9 @@ app.use("/api/post", post);
 //Connect server to static asset in client
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/static")); //when no route matches on server it reroutes to client/static folder of built client
+  app.use(express.static(__dirname));
   app.get("/*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
 
