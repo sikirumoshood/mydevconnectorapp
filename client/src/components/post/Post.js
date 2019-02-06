@@ -34,11 +34,10 @@ class Post extends Component {
             <div className="col-md-12">
               <Link
                 to="/feed"
-                style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
-                className="btn btn-light btn-lg mb-5"
+                style={{ boxShadow: "0px 3px 6px #F0F0F0", color: "white" }}
+                className="btn btn-primary mb-5"
               >
-                <i className="fa fa-long-arrow-alt-left text-muted" /> Back to
-                feed
+                <i className="fa fa-long-arrow-alt-left " /> Back to feed
               </Link>
 
               {postContent}

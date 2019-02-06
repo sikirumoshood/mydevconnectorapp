@@ -114,8 +114,8 @@ class CreateProfile extends Component {
                 marginBottom: "2%"
               }}
             >
-              <Link to="/dashboard" className="btn btn-light btn-lg">
-                <i className="fa fa-long-arrow-alt-left text-muted" /> Go back
+              <Link to="/dashboard" className="btn btn-primary ,color: 'white'">
+                <i className="fa fa-long-arrow-alt-left " /> Go back
               </Link>
               <h1 className="display-4 text-center">Create your profile</h1>
               <p className="lead text-center">

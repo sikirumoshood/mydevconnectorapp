@@ -65,10 +65,10 @@ class AddExperience extends Component {
               >
                 <Link
                   to="/dashboard"
-                  style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
-                  className="btn btn-light btn-lg mb-5"
+                  style={{ boxShadow: "0px 3px 6px #F0F0F0", color: "white" }}
+                  className="btn btn-primary mb-5"
                 >
-                  <i className="fa fa-long-arrow-alt-left text-muted" /> Go back
+                  <i className="fa fa-long-arrow-alt-left " /> Go back
                 </Link>
 
                 <h1 className="display-4 text-center">Add Your Experience</h1>

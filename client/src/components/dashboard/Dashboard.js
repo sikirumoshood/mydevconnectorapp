@@ -61,11 +61,13 @@ class Dashboard extends Component {
               <Education educations={profile.education} />
             </div>
 
-            <div style={{ marginTop: "3%" }}>
+            <div style={{ margin: "3%" }}>
               <button
                 type="button"
-                style={{ boxShadow: "0px 4px 10px #C2788B" }}
-                className="btn btn-danger btn-lg"
+                style={{
+                  backgroundColor: "#FF0004"
+                }}
+                className="btn btn-danger"
                 onClick={this.onDeleteClicked.bind(this)}
               >
                 Delete my account

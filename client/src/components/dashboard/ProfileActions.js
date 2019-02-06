@@ -7,14 +7,15 @@ export default function ProfileActions() {
       <div className="btn-group mb-4" role="group">
         <Link
           to="/edit-profile"
-          style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
+          style={{ boxShadow: "0px -2px 5px #DEDEDE" }}
           className="btn btn-light mr-4"
         >
-          <i className="fas fa-user-circle text-info mr-1" /> Edit Profile
+          <i className="fas fa-user-circle mr-1" style={{ color: "#0C4BE3" }} />{" "}
+          Edit Profile
         </Link>
         <Link
           to="/add-experience"
-          style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
+          style={{ boxShadow: "0px -2px 5px #DEDEDE" }}
           className="btn btn-light mr-4"
         >
           <i className="fab fa-black-tie text-success mr-1" />
@@ -22,7 +23,7 @@ export default function ProfileActions() {
         </Link>
         <Link
           to="/add-education"
-          style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
+          style={{ boxShadow: "0px -2px 5px #DEDEDE" }}
           className="btn btn-light mr-4"
         >
           <i className="fas fa-graduation-cap text-info text-warning mr-1" />

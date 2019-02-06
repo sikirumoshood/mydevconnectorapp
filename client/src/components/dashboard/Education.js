@@ -34,11 +34,11 @@ class Education extends Component {
         <td>
           <button
             type="button"
-            style={{ boxShadow: "0px 0px 15px #FFE4EB" }}
+            style={{ boxShadow: "0px 0px 15px #FFE4EB", color: "#FF0004" }}
             className="btn btn-lg btn-outline-light"
             onClick={() => this.handleDelete(edu._id)}
           >
-            <i className="fa fa-trash text-danger" />
+            <i className="fa fa-trash" />
           </button>
         </td>
       </tr>

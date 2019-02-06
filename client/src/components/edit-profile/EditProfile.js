@@ -117,10 +117,10 @@ class CreateProfile extends Component {
             >
               <Link
                 to="/dashboard"
-                style={{ boxShadow: "0px 3px 6px #F0F0F0" }}
-                className="btn btn-light btn-lg mb-4"
+                style={{ boxShadow: "0px 3px 6px #F0F0F0", color: "white" }}
+                className="btn btn-primary mb-4"
               >
-                <i className="fa fa-long-arrow-alt-left text-muted" /> Go back
+                <i className="fa fa-long-arrow-alt-left" /> Go back
               </Link>
               <h1 className="display-4 text-center">
                 <i
